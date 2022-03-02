@@ -117,6 +117,155 @@ export default function App() {
     setTopRatedTvShows([...returnValue]);
   };
 
+  const editPopularMovies = (selectedItem: TvShowMovie) => {
+    const newLikedList = popularMovies.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setPopularMovies(newLikedList);
+    }
+  };
+
+  // const alreadyEditedPopularMovies = (selectedItem: TvShowMovie, test) => {
+  //   const newLikedList = popularMovies.map((item: TvShowMovie) => {
+  //     if (selectedItem.id === item.id) {
+  //       return {
+  //         ...selectedItem,
+  //         editMode: !item.editMode,
+  //         writeComment:test //editMode ändras till true
+  //       };
+  //     } else {
+  //       return item;
+  //     }
+  //   });
+  //   if (newLikedList?.length) {
+  //     setPopularMovies(newLikedList);
+  //   }
+  // };
+
+  const editPopularTvShows = (selectedItem: TvShowMovie) => {
+    const newLikedList = popularTvShows.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setPopularTvShows(newLikedList);
+    }
+  };
+
+  const editTopRatedMovies = (selectedItem: TvShowMovie) => {
+    const newLikedList = topRatedMovies.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setTopRatedMovies(newLikedList);
+    }
+  };
+
+  const editTopRatedTvShows = (selectedItem: TvShowMovie) => {
+    const newLikedList = topRatedTvShows.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setTopRatedTvShows(newLikedList);
+    }
+  };
+
+  const savePopularMovies = (selectedItem: TvShowMovie, inputVal: string) => {
+    const newLikedList = popularMovies.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+          writeComment: inputVal,
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setPopularMovies(newLikedList);
+    }
+  };
+
+  const savePopularTvShows = (selectedItem: TvShowMovie, inputVal: string) => {
+    const newLikedList = popularTvShows.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+          writeComment: inputVal,
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setPopularTvShows(newLikedList);
+    }
+  };
+
+  const saveTopRatedMovies = (selectedItem: TvShowMovie, inputVal: string) => {
+    const newLikedList = topRatedMovies.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+          writeComment: inputVal,
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setTopRatedMovies(newLikedList);
+    }
+  };
+
+  const saveTopRatedTvShows = (selectedItem: TvShowMovie, inputVal: string) => {
+    const newLikedList = topRatedTvShows.map((item: TvShowMovie) => {
+      if (selectedItem.id === item.id) {
+        return {
+          ...selectedItem,
+          editMode: !item.editMode, //editMode ändras till true
+          writeComment: inputVal,
+        };
+      } else {
+        return item;
+      }
+    });
+    if (newLikedList?.length) {
+      setTopRatedTvShows(newLikedList);
+    }
+  };
+
   React.useEffect(() => {
     const filterPopularMovies = popularMovies.filter(
       (item: TvShowMovie) => item.liked
@@ -155,6 +304,14 @@ export default function App() {
         likePopularTvShows,
         likeTopRatedMovies,
         likeTopRatedTvShows,
+        editPopularMovies,
+        savePopularMovies,
+        editPopularTvShows,
+        savePopularTvShows,
+        editTopRatedMovies,
+        saveTopRatedMovies,
+        editTopRatedTvShows,
+        saveTopRatedTvShows,
       }}
     >
       <BrowserRouter>

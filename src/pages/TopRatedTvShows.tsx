@@ -21,6 +21,8 @@ const TopRatedTvShows = () => {
             showObject={tvShow}
             linkName="topratedtvshows"
             handleLike={dataContext?.likeTopRatedTvShows}
+            handleEdit={dataContext?.editTopRatedTvShows}
+            handleSave={dataContext?.saveTopRatedTvShows}
           />
         ))}
       </Grid>

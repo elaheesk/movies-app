@@ -59,59 +59,30 @@ const MyWatchList = () => {
     <Grid item>
       {!!dataContext?.likedList?.length &&
         dataContext?.likedList.map((showObject: TvShowMovie) => (
-          <Grid item margin={2}>
+          <Grid item margin={2} key={showObject?.id}>
             <Card sx={{ maxWidth: 345, height: 600 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={`${unknownUrl}${showObject?.backdrop_path}`}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {showObject?.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {showObject?.release_date}
-                  </Typography>
-
-                  <Typography variant="body2" color="text.secondary">
-                    {showObject?.overview}
-                  </Typography>
-
-                  <Button
-                    onClick={() =>
-                      dataContext?.handleAddToWatchList(showObject)
-                    }
-                  >
-                    Remove from watchlist
-                  </Button>
-
-                  <Button onClick={() => handleEditComment(showObject)}>
-                    Leave a comment
-                  </Button>
-
-                  <Typography variant="body1" color="text.secondary">
-                    {showObject?.writeComment}
-                  </Typography>
-
-                  {showObject?.editMode && (
-                    <CardContent>
-                      <input
-                        type="text"
-                        value={reviewField}
-                        onChange={(event) => {
-                          setReviewField(event.target.value);
-                        }}
-                      />
-                      <Button onClick={() => saveEditedComment(showObject)}>
-                        save
-                      </Button>
-                    </CardContent>
-                  )}
-                </CardContent>
-              </CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image={`${unknownUrl}${showObject?.backdrop_path}`}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {showObject?.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {showObject?.release_date}
+                </Typography>
+              </CardContent>
+              <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                  {showObject?.overview}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  {showObject?.writeComment}
+                </Typography>
+              </CardContent>
             </Card>
           </Grid>
         ))}

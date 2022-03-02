@@ -21,6 +21,8 @@ const PopularMovies = () => {
             showObject={movie}
             linkName="popularmovies"
             handleLike={dataContext?.likePopularMovies}
+            handleEdit={dataContext?.editPopularMovies}
+            handleSave={dataContext?.savePopularMovies}
           />
         ))}
       </Grid>

@@ -42,6 +42,8 @@ const PopularTvShows = () => {
             showObject={tvShow}
             linkName="populartvshows"
             handleLike={dataContext?.likePopularTvShows}
+            handleEdit={dataContext?.editPopularTvShows}
+            handleSave={dataContext?.savePopularTvShows}
           />
         ))}
       </Grid>

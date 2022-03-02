@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React from "react";
 import { TvShowMovie } from "./types";
 
 export interface ContextData {
@@ -24,6 +24,16 @@ export interface ContextData {
   likePopularTvShows?: any;
   likeTopRatedMovies?: any;
   likeTopRatedTvShows?: any;
+  editPopularMovies?: any;
+  savePopularMovies?: any;
+  editPopularTvShows?: any;
+  savePopularTvShows?: any;
+  editTopRatedMovies?: any;
+  saveTopRatedMovies?: any;
+
+  editTopRatedTvShows?: any;
+
+  saveTopRatedTvShows?: any;
 }
 
-export const DataContext = createContext<ContextData>({});
+export const DataContext = React.createContext<ContextData>({});
