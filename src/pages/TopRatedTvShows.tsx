@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
-
 import { apiTvShowsKey } from "../secret";
 import { TvShowMovie } from "../types";
 import { DataContext } from "../DataContext";
@@ -16,7 +15,6 @@ const TopRatedTvShows = () => {
         <Typography>Top-rated tv-shows</Typography>
       </Grid>
       <Grid item container>
-        {" "}
         {dataContext?.topRatedTvShows?.map((tvShow: TvShowMovie) => (
           <CardLayout
             key={tvShow.id}

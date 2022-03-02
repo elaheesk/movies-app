@@ -8,7 +8,6 @@ import { apiMoviesKey } from "../secret";
 const TopRatedMovies = () => {
   const dataContext = React.useContext(DataContext);
 
-
   return (
     <Grid container direction="column">
       <Grid item>
@@ -16,7 +15,6 @@ const TopRatedMovies = () => {
         <Typography>Top-rated movies</Typography>
       </Grid>
       <Grid item container>
-        {" "}
         {dataContext?.topRatedMovies?.map((topMovie: TvShowMovie) => (
           <CardLayout
             key={topMovie.id}

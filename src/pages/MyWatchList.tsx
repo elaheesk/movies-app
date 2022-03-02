@@ -1,22 +1,22 @@
 import React from "react";
 import { DataContext } from "../DataContext";
 import { TvShowMovie } from "../types";
-import {apiImg} from "../secret"
+import { apiImg } from "../secret";
 
-import { Grid, Typography,   Card,
+import {
+  Grid,
+  Typography,
+  Card,
   Button,
   CardActionArea,
   CardContent,
   CardMedia,
-  
 } from "@mui/material";
 import CardLayout from "../components/CardLayout";
-
 
 const MyWatchList = () => {
   const dataContext = React.useContext(DataContext);
   const [reviewField, setReviewField] = React.useState<string>("");
-
 
   const handleEditComment = (theEditedMovieOrShow: TvShowMovie) => {
     const newCombineMoviesTvShows = dataContext?.addedToWatchList?.map(
@@ -25,17 +25,16 @@ const MyWatchList = () => {
           return {
             ...theEditedMovieOrShow,
 
-            editMode: !theMovieOrShow.editMode //editMode ändras till true
+            editMode: !theMovieOrShow.editMode, //editMode ändras till true
           };
         } else {
           return theMovieOrShow;
         }
       }
     );
-    if (newCombineMoviesTvShows?.length)
-  {  dataContext?.setCombineMoviesTvShows(newCombineMoviesTvShows)}
-    
-
+    if (newCombineMoviesTvShows?.length) {
+      dataContext?.setCombineMoviesTvShows(newCombineMoviesTvShows);
+    }
 
     console.log("editModeChanged", newCombineMoviesTvShows);
   };
@@ -47,100 +46,94 @@ const MyWatchList = () => {
           return {
             ...theEditedMovieOrShow,
             editMode: !theMovieOrShow.editMode, //editMode ändras till true
-            writeComment: reviewField
+            writeComment: reviewField,
           };
         } else {
           return theMovieOrShow;
         }
       }
     );
-if (newCombineMoviesTvShows?.length)
-{dataContext?.setCombineMoviesTvShows(newCombineMoviesTvShows)
-    setReviewField("")}
-    
+    if (newCombineMoviesTvShows?.length) {
+      dataContext?.setCombineMoviesTvShows(newCombineMoviesTvShows);
+      setReviewField("");
+    }
   };
   let unknownUrl = `${apiImg}`;
   return (
     <Grid item>
       {dataContext?.addedToWatchList?.length ? (
         dataContext?.addedToWatchList.map((showObject: TvShowMovie) => (
-        <Grid item margin={2}>
-      <Card sx={{ maxWidth: 345, height: 600 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image={`${unknownUrl}${showObject?.backdrop_path}`}
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {showObject?.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {showObject?.release_date}
-            </Typography>
-         
-            <Typography variant="body2" color="text.secondary">
-              {showObject?.overview}
-            </Typography>
-            
-          
-              <Button
-          onClick={() => dataContext?.handleAddToWatchList(showObject)}
-        >
-          Remove from watchlist
-        </Button>
-        <>
-                <Button onClick={() => handleEditComment(showObject)}>
-                  Leave a comment
-                </Button>
-                </>
-                <Typography variant="body1" color="text.secondary">{showObject?.writeComment}</Typography>
-      
-       {showObject?.editMode && (
-                  <CardContent>
-                    <input
-                      type="text"
-                      value={reviewField}
-                      onChange={(event) => {
-                        setReviewField(event.target.value);
-                      }}
-                    />
-                    <Button onClick={() => saveEditedComment(showObject)}>
-                      save
-                    </Button>
-                  </CardContent>
-                )}
-            
-          </CardContent>
-           </CardActionArea>
- </Card>
-</Grid>)))
-      
-       : (
+          <Grid item margin={2}>
+            <Card sx={{ maxWidth: 345, height: 600 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={`${unknownUrl}${showObject?.backdrop_path}`}
+                  alt="green iguana"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {showObject?.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {showObject?.release_date}
+                  </Typography>
+
+                  <Typography variant="body2" color="text.secondary">
+                    {showObject?.overview}
+                  </Typography>
+
+                  <Button
+                    onClick={() =>
+                      dataContext?.handleAddToWatchList(showObject)
+                    }
+                  >
+                    Remove from watchlist
+                  </Button>
+
+                  <Button onClick={() => handleEditComment(showObject)}>
+                    Leave a comment
+                  </Button>
+
+                  <Typography variant="body1" color="text.secondary">
+                    {showObject?.writeComment}
+                  </Typography>
+
+                  {showObject?.editMode && (
+                    <CardContent>
+                      <input
+                        type="text"
+                        value={reviewField}
+                        onChange={(event) => {
+                          setReviewField(event.target.value);
+                        }}
+                      />
+                      <Button onClick={() => saveEditedComment(showObject)}>
+                        save
+                      </Button>
+                    </CardContent>
+                  )}
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))
+      ) : (
         <Typography variant="h6"> Nothing added to watchlst</Typography>
       )}
-               
-         
-
-         
-        </Grid>
-  
+    </Grid>
   );
 };
 export default MyWatchList;
 
-         
-       
-     
-     // <CardLayout
-          //   key={like.id}
-          //   showObject={like}
-          
-          //   handleEditComment={handleEditComment}
-          //   saveEditedComment={saveEditedComment}
-          
-          //   reviewField={reviewField}
-          //   setReviewField={setReviewField}
-          // />
+// <CardLayout
+//   key={like.id}
+//   showObject={like}
+
+//   handleEditComment={handleEditComment}
+//   saveEditedComment={saveEditedComment}
+
+//   reviewField={reviewField}
+//   setReviewField={setReviewField}
+// />

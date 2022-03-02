@@ -11,7 +11,7 @@ import DetailedPageTvShows from "./pages/DetailedPageTvShows";
 import SideNavigationBar from "./components/SideNavigationBar";
 import { apiMoviesKey } from "./secret";
 import { apiTvShowsKey } from "./secret";
-import {  Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { TvShowMovie } from "./types";
@@ -24,7 +24,7 @@ export default function App() {
     []
   );
   const [combineMoviesTvShows, setCombineMoviesTvShows] = React.useState<
-    TvShowMovie[] 
+    TvShowMovie[]
   >([]);
   const [addedToWatchList, setAddedToWatchList] = React.useState<TvShowMovie[]>(
     []
@@ -42,7 +42,7 @@ export default function App() {
           ...moviePop,
           liked: false,
           editMode: false,
-          writeComment: ""
+          writeComment: "",
         };
       });
 
@@ -57,7 +57,7 @@ export default function App() {
           ...tvShowTop,
           liked: false,
           editMode: false,
-          writeComment: ""
+          writeComment: "",
         };
       });
       setTopRatedMovies([...addNewProps]);
@@ -73,7 +73,7 @@ export default function App() {
           editMode: false,
           writeComment: "",
           title: tvShowPop.name,
-          release_date: tvShowPop.first_air_date
+          release_date: tvShowPop.first_air_date,
         };
       });
       setPopularTvShows([...addNewPropss]);
@@ -89,7 +89,7 @@ export default function App() {
           editMode: false,
           writeComment: "",
           title: tvShowTop.name,
-          release_date: tvShowTop.first_air_date
+          release_date: tvShowTop.first_air_date,
         };
       });
 
@@ -99,7 +99,7 @@ export default function App() {
         ...addNewProp,
         ...addNewProps,
         ...addNewPropss,
-        ...addNewPropsss
+        ...addNewPropsss,
       ];
       setCombineMoviesTvShows(allFourArrays);
       console.log("allFourArrays", allFourArrays);
@@ -120,66 +120,63 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    const myLikedMoviesAndShows = combineMoviesTvShows.filter((every:TvShowMovie) => {
-      if (every.liked === true) {
-        return every;
+    const myLikedMoviesAndShows = combineMoviesTvShows.filter(
+      (every: TvShowMovie) => {
+        if (every.liked === true) {
+          return every;
+        }
       }
-    });
-  
+    );
+
     setAddedToWatchList(myLikedMoviesAndShows);
   }, [combineMoviesTvShows]);
 
   return (
-  
-      <DataContext.Provider
-        value={{
-          popularMovies,
-          setPopularMovies,
-          topRatedMovies,
-          setTopRatedMovies,
-          popularTvShows,
-          setPopularTvShows,
-          topRatedTvShows,
-          setTopRatedTvShows,
-          combineMoviesTvShows,
-          setCombineMoviesTvShows,
-          addedToWatchList,
-          setAddedToWatchList,
-          handleAddToWatchList
-        }}
-      >
-        <BrowserRouter>
-          <Grid container>
+    <DataContext.Provider
+      value={{
+        popularMovies,
+        setPopularMovies,
+        topRatedMovies,
+        setTopRatedMovies,
+        popularTvShows,
+        setPopularTvShows,
+        topRatedTvShows,
+        setTopRatedTvShows,
+        combineMoviesTvShows,
+        setCombineMoviesTvShows,
+        addedToWatchList,
+        setAddedToWatchList,
+        handleAddToWatchList,
+      }}
+    >
+      <BrowserRouter>
+        <Grid container>
           <Grid item xs={2} paddingTop={4}>
             <SideNavigationBar />
           </Grid>
           <Grid item xs={10} paddingTop={5}>
-             
-              
-              <Routes>
-                {" "}
-                <Route path="popularmovies/:id" element={<DetailedPage />} />
-                <Route path="topratedmovies/:id" element={<DetailedPage />} />
-                <Route
-                  path="populartvshows/:id"
-                  element={<DetailedPageTvShows />}
-                />
-                <Route
-                  path="topratedtvshows/:id"
-                  element={<DetailedPageTvShows />}
-                />
-                <Route path="popularmovies" element={<PopularMovies />} />
-                <Route path="topratedmovies" element={<TopRatedMovies />} />
-                <Route path="populartvshows" element={<PopularTvShows />} />
-                <Route path="topratedtvshows" element={<TopRatedTvShows />} />
-                <Route path="mywatchlist" element={<MyWatchList />} />
-                <Route path="/" element={<Home />} />
-              
-              </Routes>
-              </Grid>
+            <Routes>
+              {" "}
+              <Route path="popularmovies/:id" element={<DetailedPage />} />
+              <Route path="topratedmovies/:id" element={<DetailedPage />} />
+              <Route
+                path="populartvshows/:id"
+                element={<DetailedPageTvShows />}
+              />
+              <Route
+                path="topratedtvshows/:id"
+                element={<DetailedPageTvShows />}
+              />
+              <Route path="popularmovies" element={<PopularMovies />} />
+              <Route path="topratedmovies" element={<TopRatedMovies />} />
+              <Route path="populartvshows" element={<PopularTvShows />} />
+              <Route path="topratedtvshows" element={<TopRatedTvShows />} />
+              <Route path="mywatchlist" element={<MyWatchList />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
           </Grid>
-        </BrowserRouter>
-      </DataContext.Provider>
-   
+        </Grid>
+      </BrowserRouter>
+    </DataContext.Provider>
   );
 }

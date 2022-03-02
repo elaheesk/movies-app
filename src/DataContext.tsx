@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 import { TvShowMovie } from "./types";
 
 export interface ContextData {
-  popularMovies?: TvShowMovie[] ;
+  popularMovies?: TvShowMovie[];
   setPopularMovies?: (para: TvShowMovie[]) => void;
 
   topRatedMovies?: TvShowMovie[];
@@ -14,11 +14,10 @@ export interface ContextData {
   topRatedTvShows?: TvShowMovie[];
   setTopRatedTvShows?: (para: TvShowMovie[]) => void;
 
-  combineMoviesTvShows?: TvShowMovie[]  ;
-  setCombineMoviesTvShows?:  any;
+  combineMoviesTvShows?: TvShowMovie[];
+  setCombineMoviesTvShows?: any;
   //(para:React.SetStateAction<TvShowMovie[]>) => void;
   //setCombineMoviesTvShows?: React.Dispatch<React.SetStateAction<TvShowMovie[]>;
-
 
   addedToWatchList?: TvShowMovie[] | undefined;
   setAddedToWatchList?: (para: TvShowMovie[]) => void;

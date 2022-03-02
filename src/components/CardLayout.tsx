@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 import {
   Card,
   Button,
@@ -8,7 +8,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Typography
+  Typography,
 } from "@mui/material";
 import { DataContext } from "../DataContext";
 import { TvShowMovie } from "../types";
@@ -19,17 +19,16 @@ interface Props {
   //handleEditComment?: (para: any) => void;
   //saveEditedComment?: (para: any) => void;
   //reviewField?: string;
- // setReviewField?: any;
+  // setReviewField?: any;
 
   //handleAddToWatchList?: any;
 }
-const CardLayout = ({showObject,linkName}: Props) => {
+const CardLayout = ({ showObject, linkName }: Props) => {
   const dataContext = React.useContext(DataContext);
   let unknownUrl = `${apiImg}`;
 
-
   return (
-    <Grid  item margin={2}>
+    <Grid item margin={2}>
       <Card sx={{ maxWidth: 345, height: 400 }}>
         <CardActionArea>
           <CardMedia
@@ -39,7 +38,6 @@ const CardLayout = ({showObject,linkName}: Props) => {
             alt="pic"
           />
           <CardContent>
-           
             <Typography gutterBottom variant="h5" component="div">
               {showObject?.title}
             </Typography>
@@ -47,20 +45,24 @@ const CardLayout = ({showObject,linkName}: Props) => {
               {showObject?.release_date}
             </Typography>
 
-            <Grid container justifyContent='space-between' marginY={2}>
+            <Grid container justifyContent="space-between" marginY={2}>
               <Grid item>
-              <Typography fontWeight={"light"} variant="caption">
-              <Link to={`/${linkName}/${showObject?.id}`}>Read more</Link>
-            </Typography>
+                <Typography fontWeight={"light"} variant="caption">
+                  <Link to={`/${linkName}/${showObject?.id}`}>Read more</Link>
+                </Typography>
               </Grid>
-              
+
               <Grid item>
-              <Button size="small" onClick={() => dataContext?.handleAddToWatchList(showObject)} variant="outlined" startIcon={<AddIcon />}>
-  watchlist
-</Button>
- 
-                </Grid>
-                </Grid>
+                <Button
+                  size="small"
+                  onClick={() => dataContext?.handleAddToWatchList(showObject)}
+                  variant="outlined"
+                  startIcon={<AddIcon />}
+                >
+                  watchlist
+                </Button>
+              </Grid>
+            </Grid>
 
             <Typography variant="body2" color="text.secondary">
               {showObject?.overview}
