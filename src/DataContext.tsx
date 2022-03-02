@@ -13,16 +13,17 @@ export interface ContextData {
 
   topRatedTvShows?: TvShowMovie[];
   setTopRatedTvShows?: (para: TvShowMovie[]) => void;
-
-  combineMoviesTvShows?: TvShowMovie[];
-  setCombineMoviesTvShows?: any;
   //(para:React.SetStateAction<TvShowMovie[]>) => void;
   //setCombineMoviesTvShows?: React.Dispatch<React.SetStateAction<TvShowMovie[]>;
 
-  addedToWatchList?: TvShowMovie[] | any;
-  setAddedToWatchList?: (para: TvShowMovie[]) => void;
+  likedList?: any;
+  setLikedList?: any;
 
   handleAddToWatchList?: any;
+  likePopularMovies?: any;
+  likePopularTvShows?: any;
+  likeTopRatedMovies?: any;
+  likeTopRatedTvShows?: any;
 }
 
 export const DataContext = createContext<ContextData>({});

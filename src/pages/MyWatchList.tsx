@@ -17,7 +17,7 @@ const MyWatchList = () => {
   const [reviewField, setReviewField] = React.useState<string>("");
 
   const handleEditComment = (theEditedMovieOrShow: TvShowMovie) => {
-    const newCombineMoviesTvShows = dataContext?.addedToWatchList?.map(
+    const newLikedList = dataContext?.likedList?.map(
       (theMovieOrShow: TvShowMovie) => {
         if (theEditedMovieOrShow.id === theMovieOrShow.id) {
           return {
@@ -29,15 +29,14 @@ const MyWatchList = () => {
         }
       }
     );
-    if (newCombineMoviesTvShows?.length) {
-      dataContext?.setCombineMoviesTvShows(newCombineMoviesTvShows);
+    if (newLikedList?.length) {
+      dataContext?.setLikedList(newLikedList);
     }
-
-    console.log("editModeChanged", newCombineMoviesTvShows);
+    console.log("editModeChanged", newLikedList);
   };
 
   const saveEditedComment = (theEditedMovieOrShow: TvShowMovie) => {
-    const newCombineMoviesTvShows = dataContext?.addedToWatchList?.map(
+    const newLikedList = dataContext?.likedList?.map(
       (theMovieOrShow: TvShowMovie) => {
         if (theEditedMovieOrShow.id === theMovieOrShow.id) {
           return {
@@ -50,16 +49,16 @@ const MyWatchList = () => {
         }
       }
     );
-    if (newCombineMoviesTvShows?.length) {
-      dataContext?.setCombineMoviesTvShows(newCombineMoviesTvShows);
+    if (newLikedList?.length) {
+      dataContext?.setLikedList(newLikedList);
       setReviewField("");
     }
   };
   let unknownUrl = `${apiImg}`;
   return (
     <Grid item>
-      {dataContext?.addedToWatchList?.length ? (
-        dataContext?.addedToWatchList.map((showObject: TvShowMovie) => (
+      {!!dataContext?.likedList?.length &&
+        dataContext?.likedList.map((showObject: TvShowMovie) => (
           <Grid item margin={2}>
             <Card sx={{ maxWidth: 345, height: 600 }}>
               <CardActionArea>
@@ -115,10 +114,7 @@ const MyWatchList = () => {
               </CardActionArea>
             </Card>
           </Grid>
-        ))
-      ) : (
-        <Typography variant="h6"> Nothing added to watchlst</Typography>
-      )}
+        ))}
     </Grid>
   );
 };

@@ -14,6 +14,7 @@ import { apiTvShowsKey } from "./secret";
 import { Grid } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { TvShowMovie } from "./types";
+import { handleLikePropety } from "./helperFunctions";
 
 export default function App() {
   const [popularMovies, setPopularMovies] = React.useState<TvShowMovie[]>([]);
@@ -22,117 +23,126 @@ export default function App() {
   const [topRatedTvShows, setTopRatedTvShows] = React.useState<TvShowMovie[]>(
     []
   );
-  const [combineMoviesTvShows, setCombineMoviesTvShows] = React.useState<
-    TvShowMovie[]
-  >([]);
-  const [addedToWatchList, setAddedToWatchList] = React.useState<TvShowMovie[]>(
-    []
-  );
+  const [likedList, setLikedList] = React.useState<TvShowMovie[]>([]);
 
   React.useEffect(() => {
     const fetchData = async () => {
       const respPopularMovies = await fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=${apiMoviesKey}&page=4`
       );
-      const dataa = await respPopularMovies.json();
-
-      const addNewProp = dataa.results.map((moviePop: TvShowMovie) => {
-        return {
-          ...moviePop,
-          liked: false,
-          editMode: false,
-          writeComment: "",
-        };
-      });
-
-      setPopularMovies([...addNewProp]);
-
       const respMoviesTopRated = await fetch(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiMoviesKey}&page=4`
       );
-      const data = await respMoviesTopRated.json();
-      const addNewProps = data.results.map((tvShowTop: TvShowMovie) => {
-        return {
-          ...tvShowTop,
-          liked: false,
-          editMode: false,
-          writeComment: "",
-        };
-      });
-      setTopRatedMovies([...addNewProps]);
-      const respTvShowsPopular = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${apiTvShowsKey}&page=4`
-      );
-      const dataaa = await respTvShowsPopular.json();
-
-      const addNewPropss = dataaa.results.map((tvShowPop: TvShowMovie) => {
-        return {
-          ...tvShowPop,
-          liked: false,
-          editMode: false,
-          writeComment: "",
-          title: tvShowPop.name,
-          release_date: tvShowPop.first_air_date,
-        };
-      });
-      setPopularTvShows([...addNewPropss]);
       const respTvShowsTopRated = await fetch(
         `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiTvShowsKey}&page=4`
       );
-      const dat = await respTvShowsTopRated.json();
+      const respTvShowsPopular = await fetch(
+        `https://api.themoviedb.org/3/tv/popular?api_key=${apiTvShowsKey}&page=4`
+      );
+      const dataPopularMovies = await respPopularMovies.json();
+      const dataMoviesTopRated = await respMoviesTopRated.json();
+      const dataTvShowsPopular = await respTvShowsPopular.json();
+      const dataTvShowsTopRate = await respTvShowsTopRated.json();
 
-      const addNewPropsss = dat.results.map((tvShowTop: TvShowMovie) => {
-        return {
-          ...tvShowTop,
-          liked: false,
-          editMode: false,
-          writeComment: "",
-          title: tvShowTop.name,
-          release_date: tvShowTop.first_air_date,
-        };
-      });
-
-      setTopRatedTvShows([...addNewPropsss]);
-
-      const allFourArrays = [
-        ...addNewProp,
-        ...addNewProps,
-        ...addNewPropss,
-        ...addNewPropsss,
-      ];
-      setCombineMoviesTvShows(allFourArrays);
-      console.log("allFourArrays", allFourArrays);
+      const modifiedPopularMovies = dataPopularMovies.results.map(
+        (moviePop: TvShowMovie) => {
+          return {
+            ...moviePop,
+            liked: false,
+            editMode: false,
+            writeComment: "",
+          };
+        }
+      );
+      const modifiedMoviesTopRated = dataMoviesTopRated.results.map(
+        (tvShowTop: TvShowMovie) => {
+          return {
+            ...tvShowTop,
+            liked: false,
+            editMode: false,
+            writeComment: "",
+          };
+        }
+      );
+      const modifiedTvShowsPopular = dataTvShowsPopular.results.map(
+        (tvShowPop: TvShowMovie) => {
+          return {
+            ...tvShowPop,
+            liked: false,
+            editMode: false,
+            writeComment: "",
+            title: tvShowPop.name,
+            release_date: tvShowPop.first_air_date,
+          };
+        }
+      );
+      const modifiedTvShowsTopRate = dataTvShowsTopRate.results.map(
+        (tvShowTop: TvShowMovie) => {
+          return {
+            ...tvShowTop,
+            liked: false,
+            editMode: false,
+            writeComment: "",
+            title: tvShowTop.name,
+            release_date: tvShowTop.first_air_date,
+          };
+        }
+      );
+      setPopularMovies([...modifiedPopularMovies]);
+      setTopRatedMovies([...modifiedMoviesTopRated]);
+      setPopularTvShows([...modifiedTvShowsPopular]);
+      setTopRatedTvShows([...modifiedTvShowsTopRate]);
     };
 
     fetchData();
   }, []);
 
-  const handleAddToWatchList = (theLikedMovieOrShow: TvShowMovie) => {
-    const changePropertyValue = combineMoviesTvShows.map((every) => {
-      if (theLikedMovieOrShow.id === every.id) {
-        return { ...theLikedMovieOrShow, liked: !every.liked }; //här ändrar vi värdet till motsatsen av defaultvärdet av liked. om liked är true ändras det till motsatsen false, om liked är false ändras det till motstsen true. liked: !product.liked
-      } else {
-        return every;
-      }
-    });
-    setCombineMoviesTvShows(changePropertyValue);
+  const likePopularMovies = (item: TvShowMovie) => {
+    const returnValue = handleLikePropety(popularMovies, item);
+    setPopularMovies([...returnValue]);
+  };
+
+  const likePopularTvShows = (item: TvShowMovie) => {
+    const returnValue = handleLikePropety(popularTvShows, item);
+    setPopularTvShows([...returnValue]);
+  };
+
+  const likeTopRatedMovies = (item: TvShowMovie) => {
+    const returnValue = handleLikePropety(topRatedMovies, item);
+    setTopRatedMovies([...returnValue]);
+  };
+
+  const likeTopRatedTvShows = (item: TvShowMovie) => {
+    const returnValue = handleLikePropety(topRatedTvShows, item);
+    setTopRatedTvShows([...returnValue]);
   };
 
   React.useEffect(() => {
-    const myLikedMoviesAndShows = combineMoviesTvShows.filter(
-      (every: TvShowMovie) => {
-        if (every.liked === true) {
-          return every;
-        }
-      }
+    const filterPopularMovies = popularMovies.filter(
+      (item: TvShowMovie) => item.liked
     );
-
-    setAddedToWatchList(myLikedMoviesAndShows);
-  }, [combineMoviesTvShows]);
+    const filterPopularTvShows = popularTvShows.filter(
+      (item: TvShowMovie) => item.liked
+    );
+    const filterTopRatedMovies = topRatedMovies.filter(
+      (item: TvShowMovie) => item.liked
+    );
+    const filterTopRatedTvShows = topRatedTvShows.filter(
+      (item: TvShowMovie) => item.liked
+    );
+    setLikedList([
+      ...filterPopularTvShows,
+      ...filterPopularMovies,
+      ...filterTopRatedTvShows,
+      ...filterTopRatedMovies,
+    ]);
+  }, [popularMovies, popularTvShows, topRatedMovies, topRatedTvShows]);
 
   return (
     <DataContext.Provider
       value={{
+        likedList,
+        setLikedList,
         popularMovies,
         setPopularMovies,
         topRatedMovies,
@@ -141,11 +151,10 @@ export default function App() {
         setPopularTvShows,
         topRatedTvShows,
         setTopRatedTvShows,
-        combineMoviesTvShows,
-        setCombineMoviesTvShows,
-        addedToWatchList,
-        setAddedToWatchList,
-        handleAddToWatchList,
+        likePopularMovies,
+        likePopularTvShows,
+        likeTopRatedMovies,
+        likeTopRatedTvShows,
       }}
     >
       <BrowserRouter>

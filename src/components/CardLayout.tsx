@@ -17,9 +17,14 @@ import { apiImg } from "../secret";
 interface CardLayoutProps {
   showObject: TvShowMovie;
   linkName?: string;
+  handleLike: any;
 }
 
-const CardLayout: React.FC<CardLayoutProps> = ({ showObject, linkName }) => {
+const CardLayout: React.FC<CardLayoutProps> = ({
+  showObject,
+  linkName,
+  handleLike,
+}) => {
   const dataContext = React.useContext(DataContext);
   let unknownUrl = `${apiImg}`;
 
@@ -52,16 +57,12 @@ const CardLayout: React.FC<CardLayoutProps> = ({ showObject, linkName }) => {
                 {showObject?.liked ? (
                   <FavoriteIcon
                     style={{ fill: "red" }}
-                    onClick={() =>
-                      dataContext?.handleAddToWatchList(showObject)
-                    }
+                    onClick={() => handleLike(showObject)}
                   />
                 ) : (
                   <FavoriteIcon
                     style={{ fill: "gray" }}
-                    onClick={() =>
-                      dataContext?.handleAddToWatchList(showObject)
-                    }
+                    onClick={() => handleLike(showObject)}
                   />
                 )}
               </Grid>
