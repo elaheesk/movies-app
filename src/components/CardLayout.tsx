@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import AddIcon from "@mui/icons-material/Add";
 import { Favorite as FavoriteIcon } from "@mui/icons-material";
 import {
   Card,
@@ -18,19 +17,14 @@ import { apiImg } from "../secret";
 interface CardLayoutProps {
   showObject: TvShowMovie;
   linkName?: string;
-  //handleEditComment?: (para: any) => void;
-  //saveEditedComment?: (para: any) => void;
-  //reviewField?: string;
-  // setReviewField?: any;
-
-  //handleAddToWatchList?: any;
 }
+
 const CardLayout: React.FC<CardLayoutProps> = ({ showObject, linkName }) => {
   const dataContext = React.useContext(DataContext);
   let unknownUrl = `${apiImg}`;
 
   return (
-    <Grid item margin={2}>
+    <Grid item marginRight={4} marginBottom={4}>
       <Card sx={{ maxWidth: 345, height: 400 }}>
         <CardActionArea>
           <CardMedia

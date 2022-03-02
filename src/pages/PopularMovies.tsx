@@ -9,8 +9,10 @@ const PopularMovies = () => {
 
   return (
     <Grid container direction="column">
-      <Grid item>
-        <Typography>Popular movies</Typography>
+      <Grid item marginBottom={4}>
+        <Typography component="h1" fontWeight={500} variant="h4" gutterBottom>
+          Popular movies
+        </Typography>
       </Grid>
       <Grid item container>
         {dataContext?.popularMovies?.map((movie: TvShowMovie) => (

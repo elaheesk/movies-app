@@ -9,8 +9,10 @@ const TopRatedMovies = () => {
 
   return (
     <Grid container direction="column">
-      <Grid item>
-        <Typography>Top-rated movies</Typography>
+      <Grid item marginBottom={4}>
+        <Typography component="h1" fontWeight={500} variant="h4" gutterBottom>
+          Top-rated movies
+        </Typography>
       </Grid>
       <Grid item container>
         {dataContext?.topRatedMovies?.map((topMovie: TvShowMovie) => (
