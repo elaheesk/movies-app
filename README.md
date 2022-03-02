@@ -3,6 +3,12 @@
 # You need a secret api-key in order to run this project
 You can create an account and get your api-key visiting this website https://www.themoviedb.org/
 
+And have this in secret.ts in src folder.
+
+export const apiMoviesKey = SECRETAPIKEYMOVIES;
+export const apiImg = "https://image.tmdb.org/t/p/w500";
+export const apiTvShowsKey =  SECRETAPIKEYTVSHOWS;
+
 
 # Getting Started with Create React App
 
