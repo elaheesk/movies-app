@@ -8,26 +8,7 @@ import CardLayout from "../components/CardLayout";
 const PopularMovies = () => {
   const dataContext = React.useContext(DataContext);
 
-  //React.useEffect(() => {
-  //  const fetchData = async () => {
-  //    const respTvShowsPopular = await fetch(
-  //      `https://api.themoviedb.org/3/movie/popular?api_key=${apiMoviesKey}&page=4`,
-  //    );
-  //    const dataa = await respTvShowsPopular.json();
 
-  //    const addNewProp = dataa.results.map((moviePop: TvShowMovie) => {
-  //      return {
-  //        ...moviePop,
-  //        liked: false,
-  //      };
-  //    });
-  //    if (addNewProp.length) {
-  //      dataContext?.setPopularMovies([...addNewProp]);
-  //    }
-  //    console.log("popularmovies", addNewProp);
-  //  };
-  //  fetchData();
-  //}, []);
 
   return (
     <Grid container direction="column">

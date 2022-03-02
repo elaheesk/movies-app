@@ -17,7 +17,7 @@ import {
     const { id } = useParams();
     const [details, setDetails] = React.useState<TvShowMovie | null>(null);
   
-    //const dataContext = React.useContext(DataContext);
+  
   
     React.useEffect(() => {
       const fetchData = async () => {
@@ -32,7 +32,7 @@ import {
           release_date: data.first_air_date
         };
         setDetails(addNewProperty);
-        console.log("Elaheeeeeeeeeeee", addNewProperty);
+     
       };
   
       fetchData();

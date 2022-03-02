@@ -10,18 +10,15 @@ import {
   import { apiMoviesKey } from "../secret";
   import { apiImg } from "../secret";
   import { useParams } from "react-router-dom";
-  import { DataContext } from "../DataContext";
+ 
   import { TvShowMovie } from "../types";
   
   const DetailedPage = () => {
     const { id } = useParams();
   
-    //interface Details {
-    //  title?: string;
-    //}
+    
     const [details, setDetails] = React.useState<TvShowMovie | null>(null);
   
-    //const dataContext = React.useContext(DataContext);
   
     React.useEffect(() => {
       const fetchData = async () => {
@@ -31,7 +28,7 @@ import {
         const data = await resp.json();
         const addNewProperty = { ...data, liked: false };
         setDetails(addNewProperty);
-        console.log("data", addNewProperty);
+       
       };
   
       fetchData();

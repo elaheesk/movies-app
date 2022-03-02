@@ -4,13 +4,11 @@ import { TvShowMovie } from "../types";
 import { Grid, Typography } from "@mui/material";
 import CardLayout from "../components/CardLayout";
 
-// interface Props {
-//   handleAddToWatchList?: any;
-// }
+
 const MyWatchList = () => {
   const dataContext = React.useContext(DataContext);
   const [reviewField, setReviewField] = React.useState<string>("");
-  //const [publishedComment, setPublishedComment] = React.useState("");
+
 
   const handleEditComment = (theEditedMovieOrShow: TvShowMovie) => {
     const newCombineMoviesTvShows = dataContext?.addedToWatchList?.map(
@@ -29,8 +27,6 @@ const MyWatchList = () => {
     if (newCombineMoviesTvShows?.length)
   {  dataContext?.setCombineMoviesTvShows(newCombineMoviesTvShows)}
     
-    //setPublishedComment("");
-//hwsxksjx
 
 
     console.log("editModeChanged", newCombineMoviesTvShows);
@@ -63,10 +59,10 @@ if (newCombineMoviesTvShows?.length)
           <CardLayout
             key={like.id}
             showObject={like}
-            //handleAddToWatchList={handleAddToWatchList}
+          
             handleEditComment={handleEditComment}
             saveEditedComment={saveEditedComment}
-            //publishedComment={publishedComment}
+          
             reviewField={reviewField}
             setReviewField={setReviewField}
           />

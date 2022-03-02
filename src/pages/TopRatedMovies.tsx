@@ -8,25 +8,6 @@ import { apiMoviesKey } from "../secret";
 const TopRatedMovies = () => {
   const dataContext = React.useContext(DataContext);
 
-  //React.useEffect(() => {
-  //  const fetchData = async () => {
-  //    const respTvShowsTopRated = await fetch(
-  //      `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiMoviesKey}&page=4`,
-  //    );
-  //    const dataa = await respTvShowsTopRated.json();
-
-  //    const addNewProp = dataa.results.map((tvShowTop: TvShowMovie) => {
-  //      return {
-  //        ...tvShowTop,
-  //        liked: false,
-  //      };
-  //    });
-  //    if (addNewProp.length) {
-  //      dataContext?.setTopRatedMovies([...addNewProp]);
-  //    }
-  //  };
-  //  fetchData();
-  //}, []);
 
   return (
     <Grid container direction="column">

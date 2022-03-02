@@ -1,4 +1,4 @@
-
+import React from "react";
 import { DataContext } from "./DataContext";
 import PopularMovies from "./pages/PopularMovies";
 import PopularTvShows from "./pages/PopularTvShows";
@@ -11,8 +11,8 @@ import DetailedPageTvShows from "./pages/DetailedPageTvShows";
 import SideNavigationBar from "./components/SideNavigationBar";
 import { apiMoviesKey } from "./secret";
 import { apiTvShowsKey } from "./secret";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import React, { useContext, createContext } from "react";
+import {  Grid, Typography } from "@mui/material";
+
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { TvShowMovie } from "./types";
 
