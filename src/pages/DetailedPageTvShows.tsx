@@ -10,7 +10,6 @@ import React from "react";
 import { apiTvShowsKey } from "../secret";
 import { apiImg } from "../secret";
 import { useParams } from "react-router-dom";
-
 import { TvShowMovie } from "../types";
 
 const DetailedPageTvShows = () => {

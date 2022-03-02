@@ -2,7 +2,6 @@ import React from "react";
 import { DataContext } from "../DataContext";
 import { TvShowMovie } from "../types";
 import { apiImg } from "../secret";
-
 import {
   Grid,
   Typography,
@@ -12,7 +11,6 @@ import {
   CardContent,
   CardMedia,
 } from "@mui/material";
-import CardLayout from "../components/CardLayout";
 
 const MyWatchList = () => {
   const dataContext = React.useContext(DataContext);
@@ -24,7 +22,6 @@ const MyWatchList = () => {
         if (theEditedMovieOrShow.id === theMovieOrShow.id) {
           return {
             ...theEditedMovieOrShow,
-
             editMode: !theMovieOrShow.editMode, //editMode ändras till true
           };
         } else {

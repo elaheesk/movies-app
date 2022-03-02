@@ -3,7 +3,6 @@ import React from "react";
 import CardLayout from "../components/CardLayout";
 import { DataContext } from "../DataContext";
 import { TvShowMovie } from "../types";
-import { apiMoviesKey } from "../secret";
 
 const TopRatedMovies = () => {
   const dataContext = React.useContext(DataContext);
@@ -11,7 +10,6 @@ const TopRatedMovies = () => {
   return (
     <Grid container direction="column">
       <Grid item>
-        {" "}
         <Typography>Top-rated movies</Typography>
       </Grid>
       <Grid item container>

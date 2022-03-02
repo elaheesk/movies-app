@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
+import { Favorite as FavoriteIcon } from "@mui/icons-material";
 import {
   Card,
   Button,
@@ -13,7 +14,8 @@ import {
 import { DataContext } from "../DataContext";
 import { TvShowMovie } from "../types";
 import { apiImg } from "../secret";
-interface Props {
+
+interface CardLayoutProps {
   showObject: TvShowMovie;
   linkName?: string;
   //handleEditComment?: (para: any) => void;
@@ -23,7 +25,7 @@ interface Props {
 
   //handleAddToWatchList?: any;
 }
-const CardLayout = ({ showObject, linkName }: Props) => {
+const CardLayout: React.FC<CardLayoutProps> = ({ showObject, linkName }) => {
   const dataContext = React.useContext(DataContext);
   let unknownUrl = `${apiImg}`;
 
@@ -53,17 +55,23 @@ const CardLayout = ({ showObject, linkName }: Props) => {
               </Grid>
 
               <Grid item>
-                <Button
-                  size="small"
-                  onClick={() => dataContext?.handleAddToWatchList(showObject)}
-                  variant="outlined"
-                  startIcon={<AddIcon />}
-                >
-                  watchlist
-                </Button>
+                {showObject?.liked ? (
+                  <FavoriteIcon
+                    style={{ fill: "red" }}
+                    onClick={() =>
+                      dataContext?.handleAddToWatchList(showObject)
+                    }
+                  />
+                ) : (
+                  <FavoriteIcon
+                    style={{ fill: "gray" }}
+                    onClick={() =>
+                      dataContext?.handleAddToWatchList(showObject)
+                    }
+                  />
+                )}
               </Grid>
             </Grid>
-
             <Typography variant="body2" color="text.secondary">
               {showObject?.overview}
             </Typography>

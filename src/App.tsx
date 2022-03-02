@@ -11,8 +11,7 @@ import DetailedPageTvShows from "./pages/DetailedPageTvShows";
 import SideNavigationBar from "./components/SideNavigationBar";
 import { apiMoviesKey } from "./secret";
 import { apiTvShowsKey } from "./secret";
-import { Grid, Typography } from "@mui/material";
-
+import { Grid } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { TvShowMovie } from "./types";
 
@@ -156,7 +155,6 @@ export default function App() {
           </Grid>
           <Grid item xs={10} paddingTop={5}>
             <Routes>
-              {" "}
               <Route path="popularmovies/:id" element={<DetailedPage />} />
               <Route path="topratedmovies/:id" element={<DetailedPage />} />
               <Route

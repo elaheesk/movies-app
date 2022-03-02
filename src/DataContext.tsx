@@ -19,7 +19,7 @@ export interface ContextData {
   //(para:React.SetStateAction<TvShowMovie[]>) => void;
   //setCombineMoviesTvShows?: React.Dispatch<React.SetStateAction<TvShowMovie[]>;
 
-  addedToWatchList?: TvShowMovie[] | undefined;
+  addedToWatchList?: TvShowMovie[] | any;
   setAddedToWatchList?: (para: TvShowMovie[]) => void;
 
   handleAddToWatchList?: any;

@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import { apiTvShowsKey } from "../secret";
+import { Grid, Typography } from "@mui/material";
 import { TvShowMovie } from "../types";
 import { DataContext } from "../DataContext";
 import CardLayout from "../components/CardLayout";

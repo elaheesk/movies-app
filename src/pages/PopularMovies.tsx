@@ -13,7 +13,6 @@ const PopularMovies = () => {
         <Typography>Popular movies</Typography>
       </Grid>
       <Grid item container>
-        {" "}
         {dataContext?.popularMovies?.map((movie: TvShowMovie) => (
           <CardLayout
             key={movie.id}

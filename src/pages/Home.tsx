@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles.css";
-import { Grid, Typography } from "@mui/material";
+
 const Home = () => {
   return (
     <div className="body">
