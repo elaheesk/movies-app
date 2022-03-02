@@ -173,6 +173,7 @@ export default function App() {
                 <Route path="populartvshows" element={<PopularTvShows />} />
                 <Route path="topratedtvshows" element={<TopRatedTvShows />} />
                 <Route path="mywatchlist" element={<MyWatchList />} />
+                <Route path="/" element={<Home />} />
               
               </Routes>
               </Grid>

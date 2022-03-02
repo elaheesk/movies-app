@@ -11,6 +11,11 @@ import MyWatchList from "../pages/MyWatchList";
 const SideNavigationBar=()=>{return(<Grid>
 
 <List sx={{width: "100%", height: 600, paddingLeft: 3}}>
+<ListItem>
+          <Link component={RouterLink} to="/">
+            <ListItemText primary="Home" />
+          </Link>
+        </ListItem>
         <ListItem>
           <Link component={RouterLink} to="popularmovies">
             <ListItemText primary="Popular Movies" />
