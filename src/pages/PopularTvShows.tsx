@@ -35,9 +35,9 @@ const PopularTvShows = () => {
       <Grid item>
         {" "}
         <Typography>Popular tv-shows</Typography>
-      </Grid>
-      <Grid item container>
-        {" "}
+      </Grid> 
+       <Grid item container>
+      
         {dataContext?.popularTvShows?.map((tvShow: TvShowMovie) => (
           <CardLayout
             key={tvShow.id}
