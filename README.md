@@ -1,3 +1,7 @@
+
+You need a secret api-key in order to run this project
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
