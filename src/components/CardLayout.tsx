@@ -61,7 +61,7 @@ const CardLayout: React.FC<CardLayoutProps> = ({
 
   return (
     <Grid item marginRight={4} marginBottom={4}>
-      <Card sx={{ width: 330, height: 430 }}>
+      <Card sx={{ width: 330, height: 400 }}>
         <Grid item>
           {" "}
           <CardMedia
@@ -117,48 +117,45 @@ const CardLayout: React.FC<CardLayoutProps> = ({
                   />
                 )}
               </Grid>
-            </Grid>
-          </CardContent>
-        </Grid>
-        <Grid item>
-          {" "}
-          <CardContent>
-            <Grid container direction="column">
-              <Grid item>
-                <Button
-                  disableElevation
-                  size="small"
-                  onClick={() => handleEditComment(showObject)}
-                >
-                  Leave a comment
-                </Button>
-              </Grid>
-              <Grid item>
-                {!reviewField && (
-                  <Typography>{showObject?.writeComment}</Typography>
+
+              <Grid container direction="column">
+                <Grid item>
+                  <Button
+                    disableElevation
+                    size="small"
+                    onClick={() => handleEditComment(showObject)}
+                  >
+                    Leave a comment
+                  </Button>
+                </Grid>
+                <Grid item>
+                  {!reviewField && (
+                    <Typography>{showObject?.writeComment}</Typography>
+                  )}
+                </Grid>
+                {showObject?.editMode && (
+                  <React.Fragment>
+                    <Grid item>
+                      <input
+                        type="text"
+                        value={reviewField}
+                        onChange={(event) => {
+                          setReviewField(event.target.value);
+                        }}
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Button onClick={() => handleSaveComment(showObject)}>
+                        save
+                      </Button>
+                    </Grid>
+                  </React.Fragment>
                 )}
               </Grid>
-              {showObject?.editMode && (
-                <React.Fragment>
-                  <Grid item>
-                    <input
-                      type="text"
-                      value={reviewField}
-                      onChange={(event) => {
-                        setReviewField(event.target.value);
-                      }}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Button onClick={() => handleSaveComment(showObject)}>
-                      save
-                    </Button>
-                  </Grid>
-                </React.Fragment>
-              )}
             </Grid>
           </CardContent>
         </Grid>
+        <Grid item> </Grid>
       </Card>
     </Grid>
   );
