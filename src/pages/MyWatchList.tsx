@@ -60,7 +60,7 @@ const MyWatchList = () => {
       {!!dataContext?.likedList?.length &&
         dataContext?.likedList.map((showObject: TvShowMovie) => (
           <Grid item margin={2} key={showObject?.id}>
-            <Card sx={{ maxWidth: 345, height: 600 }}>
+            <Card sx={{ maxWidth: 345, height: 650 }}>
               <CardMedia
                 component="img"
                 height="140"
