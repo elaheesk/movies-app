@@ -6,27 +6,6 @@ import CardLayout from "../components/CardLayout";
 
 const PopularTvShows = () => {
   const dataContext = React.useContext(DataContext);
-  //React.useEffect(() => {
-  //  const fetchData = async () => {
-  //    const respTvShowsPopular = await fetch(
-  //      `https://api.themoviedb.org/3/tv/popular?api_key=${apiTvShowsKey}&page=4`,
-  //    );
-  //    const dataa = await respTvShowsPopular.json();
-
-  //    const addNewProp = dataa.results.map((tvShowPop: TvShowMovie) => {
-  //      return {
-  //        ...tvShowPop,
-  //        liked: false,
-  //        title: tvShowPop.name,
-  //        release_date: tvShowPop.first_air_date,
-  //      };
-  //    });
-  //    if (addNewProp.length) {
-  //      dataContext?.setPopularTvShows([...addNewProp]);
-  //    }
-  //  };
-  //  fetchData();
-  //}, []);
 
   return (
     <Grid container direction="column">

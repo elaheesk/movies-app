@@ -13,27 +13,23 @@ export interface ContextData {
 
   topRatedTvShows?: TvShowMovie[];
   setTopRatedTvShows?: (para: TvShowMovie[]) => void;
-  //(para:React.SetStateAction<TvShowMovie[]>) => void;
-  //setCombineMoviesTvShows?: React.Dispatch<React.SetStateAction<TvShowMovie[]>;
 
   likedList?: any;
   setLikedList?: any;
 
   handleAddToWatchList?: any;
-  likePopularMovies?: any;
-  likePopularTvShows?: any;
-  likeTopRatedMovies?: any;
-  likeTopRatedTvShows?: any;
-  editPopularMovies?: any;
-  savePopularMovies?: any;
-  editPopularTvShows?: any;
-  savePopularTvShows?: any;
-  editTopRatedMovies?: any;
-  saveTopRatedMovies?: any;
-
-  editTopRatedTvShows?: any;
-
-  saveTopRatedTvShows?: any;
+  likePopularMovies?: (para: TvShowMovie) => void;
+  likePopularTvShows?: (para: TvShowMovie) => void;
+  likeTopRatedMovies?: (para: TvShowMovie) => void;
+  likeTopRatedTvShows?: (para: TvShowMovie) => void;
+  editPopularMovies?: (para: TvShowMovie) => void;
+  savePopularMovies?: (para: TvShowMovie, para2: string) => void;
+  editPopularTvShows?: (para: TvShowMovie) => void;
+  savePopularTvShows?: (para: TvShowMovie, para2: string) => void;
+  editTopRatedMovies?: (para: TvShowMovie) => void;
+  saveTopRatedMovies?: (para: TvShowMovie, para2: string) => void;
+  editTopRatedTvShows?: (para: TvShowMovie) => void;
+  saveTopRatedTvShows?: (para: TvShowMovie, para2: string) => void;
 }
 
 export const DataContext = React.createContext<ContextData>({});

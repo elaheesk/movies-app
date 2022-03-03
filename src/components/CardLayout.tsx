@@ -61,7 +61,7 @@ const CardLayout: React.FC<CardLayoutProps> = ({
 
   return (
     <Grid item marginRight={4} marginBottom={4}>
-      <Card sx={{ width: 330, height: 400 }}>
+      <Card sx={{ width: 330, height: 430 }}>
         <Grid item>
           {" "}
           <CardMedia
@@ -91,7 +91,7 @@ const CardLayout: React.FC<CardLayoutProps> = ({
         <Grid item>
           {" "}
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h6" component="div">
               {showObject?.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">

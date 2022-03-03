@@ -39,7 +39,7 @@ const SideNavigationBar = () => {
           </Link>
         </ListItem>
         <ListItem>
-          <Link component={RouterLink} to="mywatchlist">
+          <Link component={RouterLink} to="myLikes">
             Liked
           </Link>
           {dataContext?.likedList?.length ? (

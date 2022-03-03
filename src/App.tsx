@@ -4,7 +4,7 @@ import PopularMovies from "./pages/PopularMovies";
 import PopularTvShows from "./pages/PopularTvShows";
 import TopRatedMovies from "./pages/TopRatedMovies";
 import TopRatedTvShows from "./pages/TopRatedTvShows";
-import MyWatchList from "./pages/MyWatchList";
+import MyLikes from "./pages/MyLikes";
 import Home from "./pages/Home";
 import DetailedPage from "./pages/DetailedPage";
 import DetailedPageTvShows from "./pages/DetailedPageTvShows";
@@ -133,23 +133,6 @@ export default function App() {
     }
   };
 
-  // const alreadyEditedPopularMovies = (selectedItem: TvShowMovie, test) => {
-  //   const newLikedList = popularMovies.map((item: TvShowMovie) => {
-  //     if (selectedItem.id === item.id) {
-  //       return {
-  //         ...selectedItem,
-  //         editMode: !item.editMode,
-  //         writeComment:test //editMode ändras till true
-  //       };
-  //     } else {
-  //       return item;
-  //     }
-  //   });
-  //   if (newLikedList?.length) {
-  //     setPopularMovies(newLikedList);
-  //   }
-  // };
-
   const editPopularTvShows = (selectedItem: TvShowMovie) => {
     const newLikedList = popularTvShows.map((item: TvShowMovie) => {
       if (selectedItem.id === item.id) {
@@ -254,7 +237,7 @@ export default function App() {
       if (selectedItem.id === item.id) {
         return {
           ...selectedItem,
-          editMode: !item.editMode, //editMode ändras till true
+          editMode: !item.editMode, //editMode ändras till det motsatta
           writeComment: inputVal,
         };
       } else {
@@ -335,7 +318,7 @@ export default function App() {
               <Route path="topratedmovies" element={<TopRatedMovies />} />
               <Route path="populartvshows" element={<PopularTvShows />} />
               <Route path="topratedtvshows" element={<TopRatedTvShows />} />
-              <Route path="mywatchlist" element={<MyWatchList />} />
+              <Route path="myLikes" element={<MyLikes />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </Grid>
