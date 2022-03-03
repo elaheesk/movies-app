@@ -9,6 +9,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  TextField,
   Typography,
 } from "@mui/material";
 import { TvShowMovie } from "../types";
@@ -61,7 +62,7 @@ const CardLayout: React.FC<CardLayoutProps> = ({
 
   return (
     <Grid item marginRight={4} marginBottom={4}>
-      <Card sx={{ width: 330, height: 400 }}>
+      <Card sx={{ width: 330, height: 450 }}>
         <Grid item>
           {" "}
           <CardMedia
@@ -136,10 +137,15 @@ const CardLayout: React.FC<CardLayoutProps> = ({
                 {showObject?.editMode && (
                   <React.Fragment>
                     <Grid item>
-                      <input
+                      <TextField
+                        fullWidth
+                        id="outlined-multiline-static"
+                        label="Type comment"
+                        multiline
+                        rows={3}
                         type="text"
                         value={reviewField}
-                        onChange={(event) => {
+                        onChange={(event: any) => {
                           setReviewField(event.target.value);
                         }}
                       />
