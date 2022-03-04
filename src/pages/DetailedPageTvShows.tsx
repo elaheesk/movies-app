@@ -1,4 +1,10 @@
+import React from "react";
+import { apiTvShowsKey } from "../secret";
+import { apiImg } from "../secret";
+import { useParams } from "react-router-dom";
+import { TvShowMovie } from "../types";
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -6,12 +12,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import React from "react";
-import { apiTvShowsKey } from "../secret";
-import { apiImg } from "../secret";
-import { useParams } from "react-router-dom";
-import { TvShowMovie } from "../types";
-
+import StarRateIcon from "@mui/icons-material/StarRate";
 const DetailedPageTvShows = () => {
   const { id } = useParams();
   const [details, setDetails] = React.useState<TvShowMovie | null>(null);
@@ -37,23 +38,37 @@ const DetailedPageTvShows = () => {
   let unknownUrl = `${apiImg}`;
   return (
     <Grid item margin={2}>
-      <Card sx={{ maxWidth: 345, height: 400 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image={`${unknownUrl}${details?.backdrop_path}`}
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+      <Card sx={{ display: "flex", height: 440 }}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
               {details?.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography component="div" variant="h5">
+              {details?.release_date}
+              <Typography component="div" variant="h5">
+                {" "}
+                IMDb Rating{" "}
+                <StarRateIcon style={{ fill: "gold" }}></StarRateIcon>
+                {details?.vote_average}
+              </Typography>
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              component="div"
+            >
               {details?.overview}
             </Typography>
           </CardContent>
-        </CardActionArea>
+        </Box>
+        <CardMedia
+          component="img"
+          height="300"
+          sx={{ width: 400 }}
+          image={`${unknownUrl}${details?.backdrop_path}`}
+          alt="Live from space album cover"
+        />
       </Card>
     </Grid>
   );

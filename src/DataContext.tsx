@@ -18,10 +18,10 @@ export interface ContextData {
   setLikedList?: any;
 
   handleAddToWatchList?: any;
-  likePopularMovies?: (para: TvShowMovie) => void;
-  likePopularTvShows?: (para: TvShowMovie) => void;
-  likeTopRatedMovies?: (para: TvShowMovie) => void;
-  likeTopRatedTvShows?: (para: TvShowMovie) => void;
+  likePopularMovies: (para: TvShowMovie) => void;
+  likePopularTvShows: (para: TvShowMovie) => void;
+  likeTopRatedMovies: (para: TvShowMovie) => void;
+  likeTopRatedTvShows: (para: TvShowMovie) => void;
   editPopularMovies?: (para: TvShowMovie) => void;
   savePopularMovies?: (para: TvShowMovie, para2: string) => void;
   editPopularTvShows?: (para: TvShowMovie) => void;
@@ -32,4 +32,4 @@ export interface ContextData {
   saveTopRatedTvShows?: (para: TvShowMovie, para2: string) => void;
 }
 
-export const DataContext = React.createContext<ContextData>({});
+export const DataContext = React.createContext<ContextData | null>(null);

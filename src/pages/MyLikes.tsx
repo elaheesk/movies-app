@@ -2,10 +2,24 @@ import React from "react";
 import { DataContext } from "../DataContext";
 import { TvShowMovie } from "../types";
 import { apiImg } from "../secret";
-import { Grid, Typography, Card, CardContent, CardMedia } from "@mui/material";
+import {
+  Button,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
 
 const MyLikes = () => {
   const dataContext = React.useContext(DataContext);
+
+  const removeLiked = (item: TvShowMovie) => {
+    dataContext?.likePopularMovies(item);
+    dataContext?.likeTopRatedMovies(item);
+    dataContext?.likePopularTvShows(item);
+    dataContext?.likeTopRatedTvShows(item);
+  };
 
   let unknownUrl = `${apiImg}`;
   return (
@@ -24,9 +38,18 @@ const MyLikes = () => {
                 <Typography gutterBottom variant="h5" component="div">
                   {showObject?.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {showObject?.release_date}
-                </Typography>
+                <Grid container justifyContent="space-between">
+                  <Grid item>
+                    <Typography variant="body1" color="text.secondary">
+                      {showObject?.release_date}
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Button onClick={() => removeLiked(showObject)}>
+                      Remove
+                    </Button>
+                  </Grid>
+                </Grid>
               </CardContent>
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
